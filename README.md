@@ -4,11 +4,9 @@ I ran into this peculiar situation in which I needed to set up a local network, 
 
 ![](pi_bridge_no_internet.png)
 
-While searching the Internet for the perfect (and simple) solution to my problem, I found a myriad of articles and posts on how to turning Pi into a wireless AP which extends an existing network, which do not address the problem I have. After much digging and experimentation, I finally landed on an easy solution, which is being documented here.
+While searching the Internet for the perfect (and ideally simple) solution to my problem, I found a myriad of articles and posts on how to turn Pi into a wireless AP which extends an existing network, which do not address the problem I have. After much digging and experimentation, I finally landed on a very easy solution, which I document here.
 
-The solution was tested on Raspberry Pi 3B running Raspberry Pi OS 64-bit (May 3rd 2023 Release). To make Pi issue IP address via DHCP, install **_dnsmasq_**. Also make sure predictable network interface name feature is disabled in **_raspi-config_**.
-
-## Make sure
+The solution was tested on Raspberry Pi 3B running Raspberry Pi OS 64-bit (May 3rd 2023 Release). To make Pi issue IP address via DHCP, install **_dnsmasq_**. Also make sure predictable network interface name feature is disabled in **_raspi-config_**. Otherwise, Pi might change the interface name to something like concatenation of the MAC address with the interface type as the prefix.
 
 ## Switch to root account
 
@@ -16,7 +14,7 @@ The solution was tested on Raspberry Pi 3B running Raspberry Pi OS 64-bit (May 3
 sudo -Es    # makes your life easier for what we are going to do next
 ```
 
-## Create the Bridge and Add wlan0 and eth0 to it
+## Create the bridge and add wlan0 and eth0 to it
 
 Modify /etc/network/interfaces and add the following lines
 I chose 192.168.0.1/24 as the IP address range. You can change it to your liking.
